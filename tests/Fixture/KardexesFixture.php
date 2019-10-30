@@ -43,8 +43,8 @@ class KardexesFixture extends TestFixture
             [
                 'id' => 1,
                 'user_id' => 1,
-                'created' => '2019-10-30 15:10:30',
-                'modified' => '2019-10-30 15:10:30'
+                'created' => '2019-10-30 21:20:19',
+                'modified' => '2019-10-30 21:20:19'
             ],
         ];
         parent::init();

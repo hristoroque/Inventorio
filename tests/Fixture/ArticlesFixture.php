@@ -56,8 +56,8 @@ class ArticlesFixture extends TestFixture
                 'description' => 'Lorem ipsum dolor sit amet',
                 'price' => 1,
                 'state' => 1,
-                'created' => '2019-10-30 15:10:04',
-                'modified' => '2019-10-30 15:10:04'
+                'created' => '2019-10-30 21:20:13',
+                'modified' => '2019-10-30 21:20:13'
             ],
         ];
         parent::init();

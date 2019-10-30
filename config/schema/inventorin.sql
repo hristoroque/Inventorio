@@ -59,12 +59,12 @@ CREATE TABLE kardexes (
 ) CHARSET=utf8;
 
 CREATE TABLE articles_kardexes (    
-    resgistry BOOLEAN DEFAULT TRUE,
-    quantity INT(5) NOT NULL,
-    amount INT(10) NOT NULL,    
+    id INT AUTO_INCREMENT PRIMARY KEY,    
     article_id INT NOT NULL,
     kardex_id INT NOT NULL,
-    PRIMARY KEY (article_id, kardex_id),
-    FOREIGN KEY kardex_key(kardex_id) REFERENCES kardexes(id),
-    FOREIGN KEY article_key(article_id) REFERENCES articles(id)
+    resgistry BOOLEAN DEFAULT TRUE,
+    quantity INT(5) NOT NULL,
+    amount INT(10) NOT NULL,        
+    FOREIGN KEY article_key(article_id) REFERENCES articles(id),
+    FOREIGN KEY kardex_key(kardex_id) REFERENCES kardexes(id)
 ) CHARSET=utf8;

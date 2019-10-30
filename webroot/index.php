@@ -40,4 +40,4 @@ $server = new Server(new Application(dirname(__DIR__) . '/config'));
 $server->emit($server->run());
 ?>
 
-<h1> It's working baby </h1>
+

@@ -34,8 +34,8 @@ class ArticlesKardexesTable extends Table
         parent::initialize($config);
 
         $this->setTable('articles_kardexes');
-        $this->setDisplayField('article_id');
-        $this->setPrimaryKey(['article_id', 'kardex_id']);
+        $this->setDisplayField('id');
+        $this->setPrimaryKey('id');
 
         $this->belongsTo('Articles', [
             'foreignKey' => 'article_id',
@@ -55,6 +55,10 @@ class ArticlesKardexesTable extends Table
      */
     public function validationDefault(Validator $validator)
     {
+        $validator
+            ->integer('id')
+            ->allowEmptyString('id', null, 'create');
+
         $validator
             ->boolean('resgistry')
             ->allowEmptyString('resgistry');

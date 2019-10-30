@@ -43,7 +43,8 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
         <div class="top-bar-section">
             <ul class="right">
                 <li><a target="_blank" href="https://book.cakephp.org/3.0/">Documentation</a></li>
-                <li><a target="_blank" href="https://api.cakephp.org/3.0/">API</a></li>
+                <li><a target="_blank" href="https://api.cakephp.org/3.0/">API</a></li>                
+                <li><a  href="./">REGRESAR  </a></li>                
             </ul>
         </div>
     </nav>
@@ -52,6 +53,7 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
         <?= $this->fetch('content') ?>
     </div>
     <footer>
+    <a href = "./">REGRESAR</a><br>
     </footer>
 </body>
 </html>

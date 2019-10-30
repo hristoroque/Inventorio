@@ -6,11 +6,12 @@ use Cake\ORM\Entity;
 /**
  * ArticlesKardex Entity
  *
+ * @property int $id
+ * @property int $article_id
+ * @property int $kardex_id
  * @property bool|null $resgistry
  * @property int $quantity
  * @property int $amount
- * @property int $article_id
- * @property int $kardex_id
  *
  * @property \App\Model\Entity\Article $article
  * @property \App\Model\Entity\Kardex $kardex
@@ -27,6 +28,8 @@ class ArticlesKardex extends Entity
      * @var array
      */
     protected $_accessible = [
+        'article_id' => true,
+        'kardex_id' => true,
         'resgistry' => true,
         'quantity' => true,
         'amount' => true,

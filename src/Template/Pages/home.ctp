@@ -7,4 +7,4 @@
 <a href = "./providers">proveedores</a><br>
 <a href = "./articles">articulos</a><br>
 <a href = "./kardexes">kardex cabecera</a><br>
-<a href = "./articleskardexes">kardex detalle</a><br>
+<a href = "./articles-kardexes">kardex detalle</a><br>
