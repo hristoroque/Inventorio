@@ -11,18 +11,18 @@ CREATE TABLE users (
     state BOOLEAN DEFAULT TRUE,
     created DATETIME,
     modified DATETIME,
-    UNIQUE KEY (DNI),
-    UNIQUE KEY (login)
+    UNIQUE (DNI),
+    UNIQUE (login)
 )CHARSET=utf8;
 
-CREATE TABLE providers (  asd  
+CREATE TABLE providers (    
     id INT AUTO_INCREMENT PRIMARY KEY,
     name VARCHAR(100),
     company VARCHAR(100) NOT NULL,
     state BOOLEAN DEFAULT TRUE,
     created DATETIME,
     modified DATETIME,
-    UNIQUE KEY (company)
+    UNIQUE (company)
 )CHARSET=utf8;
 
 CREATE TABLE categories (    
@@ -32,7 +32,7 @@ CREATE TABLE categories (
     state BOOLEAN DEFAULT TRUE,
     created DATETIME,
     modified DATETIME,
-    UNIQUE KEY (name)
+    UNIQUE (name)
 )CHARSET=utf8;
 
 CREATE TABLE articles (
@@ -45,7 +45,7 @@ CREATE TABLE articles (
     state BOOLEAN DEFAULT TRUE,   
     created DATETIME,
     modified DATETIME,
-    UNIQUE KEY (name),
+    UNIQUE (name),
     FOREIGN KEY provider_key (provider_id) REFERENCES providers(id),
     FOREIGN KEY category_key (category_id) REFERENCES categories(id)
 ) CHARSET=utf8;
