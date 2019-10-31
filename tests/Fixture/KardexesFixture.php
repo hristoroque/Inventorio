@@ -24,7 +24,7 @@ class KardexesFixture extends TestFixture
         ],
         '_constraints' => [
             'primary' => ['type' => 'primary', 'columns' => ['id'], 'length' => []],
-            'user_key' => ['type' => 'foreign', 'columns' => ['user_id'], 'references' => ['users', 'id'], 'update' => 'restrict', 'delete' => 'restrict', 'length' => []],
+            'kardexes_ibfk_1' => ['type' => 'foreign', 'columns' => ['user_id'], 'references' => ['users', 'id'], 'update' => 'restrict', 'delete' => 'restrict', 'length' => []],
         ],
         '_options' => [
             'engine' => 'InnoDB',
@@ -43,8 +43,8 @@ class KardexesFixture extends TestFixture
             [
                 'id' => 1,
                 'user_id' => 1,
-                'created' => '2019-10-30 21:20:19',
-                'modified' => '2019-10-30 21:20:19'
+                'created' => '2019-10-31 18:20:33',
+                'modified' => '2019-10-31 18:20:33'
             ],
         ];
         parent::init();

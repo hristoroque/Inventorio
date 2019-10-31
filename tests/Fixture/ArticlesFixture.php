@@ -31,8 +31,8 @@ class ArticlesFixture extends TestFixture
         '_constraints' => [
             'primary' => ['type' => 'primary', 'columns' => ['id'], 'length' => []],
             'name' => ['type' => 'unique', 'columns' => ['name'], 'length' => []],
-            'category_key' => ['type' => 'foreign', 'columns' => ['category_id'], 'references' => ['categories', 'id'], 'update' => 'restrict', 'delete' => 'restrict', 'length' => []],
-            'provider_key' => ['type' => 'foreign', 'columns' => ['provider_id'], 'references' => ['providers', 'id'], 'update' => 'restrict', 'delete' => 'restrict', 'length' => []],
+            'articles_ibfk_1' => ['type' => 'foreign', 'columns' => ['provider_id'], 'references' => ['providers', 'id'], 'update' => 'restrict', 'delete' => 'restrict', 'length' => []],
+            'articles_ibfk_2' => ['type' => 'foreign', 'columns' => ['category_id'], 'references' => ['categories', 'id'], 'update' => 'restrict', 'delete' => 'restrict', 'length' => []],
         ],
         '_options' => [
             'engine' => 'InnoDB',
@@ -56,8 +56,8 @@ class ArticlesFixture extends TestFixture
                 'description' => 'Lorem ipsum dolor sit amet',
                 'price' => 1,
                 'state' => 1,
-                'created' => '2019-10-30 21:20:13',
-                'modified' => '2019-10-30 21:20:13'
+                'created' => '2019-10-31 18:19:51',
+                'modified' => '2019-10-31 18:19:51'
             ],
         ];
         parent::init();

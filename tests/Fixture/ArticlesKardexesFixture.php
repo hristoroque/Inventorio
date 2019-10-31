@@ -27,8 +27,8 @@ class ArticlesKardexesFixture extends TestFixture
         ],
         '_constraints' => [
             'primary' => ['type' => 'primary', 'columns' => ['id'], 'length' => []],
-            'article_key' => ['type' => 'foreign', 'columns' => ['article_id'], 'references' => ['articles', 'id'], 'update' => 'restrict', 'delete' => 'restrict', 'length' => []],
-            'kardex_key' => ['type' => 'foreign', 'columns' => ['kardex_id'], 'references' => ['kardexes', 'id'], 'update' => 'restrict', 'delete' => 'restrict', 'length' => []],
+            'articles_kardexes_ibfk_1' => ['type' => 'foreign', 'columns' => ['article_id'], 'references' => ['articles', 'id'], 'update' => 'restrict', 'delete' => 'restrict', 'length' => []],
+            'articles_kardexes_ibfk_2' => ['type' => 'foreign', 'columns' => ['kardex_id'], 'references' => ['kardexes', 'id'], 'update' => 'restrict', 'delete' => 'restrict', 'length' => []],
         ],
         '_options' => [
             'engine' => 'InnoDB',
