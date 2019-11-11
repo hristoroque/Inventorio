@@ -4,20 +4,18 @@ namespace App\Model\Entity;
 use Cake\ORM\Entity;
 
 /**
- * User Entity
+ * KardexesCab Entity
  *
  * @property int $id
- * @property string $name
- * @property int $DNI
- * @property string $login
- * @property string $password
- * @property bool|null $state
+ * @property int $article_id
+ * @property int $current_stock
+ * @property float $current_balance
  * @property \Cake\I18n\FrozenTime|null $created
  * @property \Cake\I18n\FrozenTime|null $modified
  *
- * @property \App\Model\Entity\OperationsCab[] $operations_cab
+ * @property \App\Model\Entity\Article $article
  */
-class User extends Entity
+class KardexesCab extends Entity
 {
     /**
      * Fields that can be mass assigned using newEntity() or patchEntity().
@@ -29,22 +27,11 @@ class User extends Entity
      * @var array
      */
     protected $_accessible = [
-        'name' => true,
-        'DNI' => true,
-        'login' => true,
-        'password' => true,
-        'state' => true,
+        'article_id' => true,
+        'current_stock' => true,
+        'current_balance' => true,
         'created' => true,
         'modified' => true,
-        'operations_cab' => true
-    ];
-
-    /**
-     * Fields that are excluded from JSON versions of the entity.
-     *
-     * @var array
-     */
-    protected $_hidden = [
-        'password'
+        'article' => true
     ];
 }

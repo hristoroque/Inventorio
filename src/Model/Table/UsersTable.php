@@ -9,7 +9,7 @@ use Cake\Validation\Validator;
 /**
  * Users Model
  *
- * @property \App\Model\Table\KardexesTable&\Cake\ORM\Association\HasMany $Kardexes
+ * @property \App\Model\Table\OperationsCabTable&\Cake\ORM\Association\HasMany $OperationsCab
  *
  * @method \App\Model\Entity\User get($primaryKey, $options = [])
  * @method \App\Model\Entity\User newEntity($data = null, array $options = [])
@@ -40,7 +40,7 @@ class UsersTable extends Table
 
         $this->addBehavior('Timestamp');
 
-        $this->hasMany('Kardexes', [
+        $this->hasMany('OperationsCab', [
             'foreignKey' => 'user_id'
         ]);
     }

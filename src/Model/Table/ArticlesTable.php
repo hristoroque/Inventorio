@@ -11,7 +11,8 @@ use Cake\Validation\Validator;
  *
  * @property \App\Model\Table\ProvidersTable&\Cake\ORM\Association\BelongsTo $Providers
  * @property \App\Model\Table\CategoriesTable&\Cake\ORM\Association\BelongsTo $Categories
- * @property \App\Model\Table\KardexesTable&\Cake\ORM\Association\BelongsToMany $Kardexes
+ * @property \App\Model\Table\KardexesCabTable&\Cake\ORM\Association\HasMany $KardexesCab
+ * @property \App\Model\Table\OperationsDetTable&\Cake\ORM\Association\HasMany $OperationsDet
  *
  * @method \App\Model\Entity\Article get($primaryKey, $options = [])
  * @method \App\Model\Entity\Article newEntity($data = null, array $options = [])
@@ -50,10 +51,11 @@ class ArticlesTable extends Table
             'foreignKey' => 'category_id',
             'joinType' => 'INNER'
         ]);
-        $this->belongsToMany('Kardexes', [
-            'foreignKey' => 'article_id',
-            'targetForeignKey' => 'kardex_id',
-            'joinTable' => 'articles_kardexes'
+        $this->hasMany('KardexesCab', [
+            'foreignKey' => 'article_id'
+        ]);
+        $this->hasMany('OperationsDet', [
+            'foreignKey' => 'article_id'
         ]);
     }
 
@@ -70,6 +72,16 @@ class ArticlesTable extends Table
             ->allowEmptyString('id', null, 'create');
 
         $validator
+            ->numeric('buy_price')
+            ->requirePresence('buy_price', 'create')
+            ->notEmptyString('buy_price');
+
+        $validator
+            ->numeric('sell_price')
+            ->requirePresence('sell_price', 'create')
+            ->notEmptyString('sell_price');
+
+        $validator
             ->scalar('name')
             ->maxLength('name', 100)
             ->requirePresence('name', 'create')
@@ -80,11 +92,6 @@ class ArticlesTable extends Table
             ->scalar('description')
             ->maxLength('description', 255)
             ->allowEmptyString('description');
-
-        $validator
-            ->numeric('price')
-            ->requirePresence('price', 'create')
-            ->notEmptyString('price');
 
         $validator
             ->boolean('state')

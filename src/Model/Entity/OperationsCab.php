@@ -4,19 +4,18 @@ namespace App\Model\Entity;
 use Cake\ORM\Entity;
 
 /**
- * ArticlesKardex Entity
+ * OperationsCab Entity
  *
  * @property int $id
- * @property int $article_id
- * @property int $kardex_id
- * @property bool|null $resgistry
- * @property int $quantity
- * @property int $amount
+ * @property int $user_id
+ * @property int $operation_type_id
+ * @property \Cake\I18n\FrozenTime|null $created
+ * @property \Cake\I18n\FrozenTime|null $modified
  *
- * @property \App\Model\Entity\Article $article
- * @property \App\Model\Entity\Kardex $kardex
+ * @property \App\Model\Entity\User $user
+ * @property \App\Model\Entity\OperationsType $operations_type
  */
-class ArticlesKardex extends Entity
+class OperationsCab extends Entity
 {
     /**
      * Fields that can be mass assigned using newEntity() or patchEntity().
@@ -28,12 +27,11 @@ class ArticlesKardex extends Entity
      * @var array
      */
     protected $_accessible = [
-        'article_id' => true,
-        'kardex_id' => true,
-        'resgistry' => true,
-        'quantity' => true,
-        'amount' => true,
-        'article' => true,
-        'kardex' => true
+        'user_id' => true,
+        'operation_type_id' => true,
+        'created' => true,
+        'modified' => true,
+        'user' => true,
+        'operations_type' => true
     ];
 }

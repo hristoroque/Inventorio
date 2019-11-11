@@ -7,21 +7,23 @@ use Cake\ORM\Table;
 use Cake\Validation\Validator;
 
 /**
- * ArticlesKardexes Model
+ * OperationsDet Model
  *
+ * @property \App\Model\Table\OperationsCabTable&\Cake\ORM\Association\BelongsTo $OperationsCab
  * @property \App\Model\Table\ArticlesTable&\Cake\ORM\Association\BelongsTo $Articles
- * @property \App\Model\Table\KardexesTable&\Cake\ORM\Association\BelongsTo $Kardexes
  *
- * @method \App\Model\Entity\ArticlesKardex get($primaryKey, $options = [])
- * @method \App\Model\Entity\ArticlesKardex newEntity($data = null, array $options = [])
- * @method \App\Model\Entity\ArticlesKardex[] newEntities(array $data, array $options = [])
- * @method \App\Model\Entity\ArticlesKardex|false save(\Cake\Datasource\EntityInterface $entity, $options = [])
- * @method \App\Model\Entity\ArticlesKardex saveOrFail(\Cake\Datasource\EntityInterface $entity, $options = [])
- * @method \App\Model\Entity\ArticlesKardex patchEntity(\Cake\Datasource\EntityInterface $entity, array $data, array $options = [])
- * @method \App\Model\Entity\ArticlesKardex[] patchEntities($entities, array $data, array $options = [])
- * @method \App\Model\Entity\ArticlesKardex findOrCreate($search, callable $callback = null, $options = [])
+ * @method \App\Model\Entity\OperationsDet get($primaryKey, $options = [])
+ * @method \App\Model\Entity\OperationsDet newEntity($data = null, array $options = [])
+ * @method \App\Model\Entity\OperationsDet[] newEntities(array $data, array $options = [])
+ * @method \App\Model\Entity\OperationsDet|false save(\Cake\Datasource\EntityInterface $entity, $options = [])
+ * @method \App\Model\Entity\OperationsDet saveOrFail(\Cake\Datasource\EntityInterface $entity, $options = [])
+ * @method \App\Model\Entity\OperationsDet patchEntity(\Cake\Datasource\EntityInterface $entity, array $data, array $options = [])
+ * @method \App\Model\Entity\OperationsDet[] patchEntities($entities, array $data, array $options = [])
+ * @method \App\Model\Entity\OperationsDet findOrCreate($search, callable $callback = null, $options = [])
+ *
+ * @mixin \Cake\ORM\Behavior\TimestampBehavior
  */
-class ArticlesKardexesTable extends Table
+class OperationsDetTable extends Table
 {
     /**
      * Initialize method
@@ -33,16 +35,18 @@ class ArticlesKardexesTable extends Table
     {
         parent::initialize($config);
 
-        $this->setTable('articles_kardexes');
+        $this->setTable('operations_det');
         $this->setDisplayField('id');
         $this->setPrimaryKey('id');
 
-        $this->belongsTo('Articles', [
-            'foreignKey' => 'article_id',
+        $this->addBehavior('Timestamp');
+
+        $this->belongsTo('OperationsCab', [
+            'foreignKey' => 'operation_cab_id',
             'joinType' => 'INNER'
         ]);
-        $this->belongsTo('Kardexes', [
-            'foreignKey' => 'kardex_id',
+        $this->belongsTo('Articles', [
+            'foreignKey' => 'article_id',
             'joinType' => 'INNER'
         ]);
     }
@@ -60,18 +64,9 @@ class ArticlesKardexesTable extends Table
             ->allowEmptyString('id', null, 'create');
 
         $validator
-            ->boolean('resgistry')
-            ->allowEmptyString('resgistry');
-
-        $validator
             ->integer('quantity')
             ->requirePresence('quantity', 'create')
             ->notEmptyString('quantity');
-
-        $validator
-            ->integer('amount')
-            ->requirePresence('amount', 'create')
-            ->notEmptyString('amount');
 
         return $validator;
     }
@@ -85,8 +80,8 @@ class ArticlesKardexesTable extends Table
      */
     public function buildRules(RulesChecker $rules)
     {
+        $rules->add($rules->existsIn(['operation_cab_id'], 'OperationsCab'));
         $rules->add($rules->existsIn(['article_id'], 'Articles'));
-        $rules->add($rules->existsIn(['kardex_id'], 'Kardexes'));
 
         return $rules;
     }

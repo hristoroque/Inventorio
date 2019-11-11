@@ -7,23 +7,23 @@ use Cake\ORM\Table;
 use Cake\Validation\Validator;
 
 /**
- * Kardexes Model
+ * OperationsCab Model
  *
  * @property \App\Model\Table\UsersTable&\Cake\ORM\Association\BelongsTo $Users
- * @property \App\Model\Table\ArticlesTable&\Cake\ORM\Association\BelongsToMany $Articles
+ * @property \App\Model\Table\OperationsTypesTable&\Cake\ORM\Association\BelongsTo $OperationsTypes
  *
- * @method \App\Model\Entity\Kardex get($primaryKey, $options = [])
- * @method \App\Model\Entity\Kardex newEntity($data = null, array $options = [])
- * @method \App\Model\Entity\Kardex[] newEntities(array $data, array $options = [])
- * @method \App\Model\Entity\Kardex|false save(\Cake\Datasource\EntityInterface $entity, $options = [])
- * @method \App\Model\Entity\Kardex saveOrFail(\Cake\Datasource\EntityInterface $entity, $options = [])
- * @method \App\Model\Entity\Kardex patchEntity(\Cake\Datasource\EntityInterface $entity, array $data, array $options = [])
- * @method \App\Model\Entity\Kardex[] patchEntities($entities, array $data, array $options = [])
- * @method \App\Model\Entity\Kardex findOrCreate($search, callable $callback = null, $options = [])
+ * @method \App\Model\Entity\OperationsCab get($primaryKey, $options = [])
+ * @method \App\Model\Entity\OperationsCab newEntity($data = null, array $options = [])
+ * @method \App\Model\Entity\OperationsCab[] newEntities(array $data, array $options = [])
+ * @method \App\Model\Entity\OperationsCab|false save(\Cake\Datasource\EntityInterface $entity, $options = [])
+ * @method \App\Model\Entity\OperationsCab saveOrFail(\Cake\Datasource\EntityInterface $entity, $options = [])
+ * @method \App\Model\Entity\OperationsCab patchEntity(\Cake\Datasource\EntityInterface $entity, array $data, array $options = [])
+ * @method \App\Model\Entity\OperationsCab[] patchEntities($entities, array $data, array $options = [])
+ * @method \App\Model\Entity\OperationsCab findOrCreate($search, callable $callback = null, $options = [])
  *
  * @mixin \Cake\ORM\Behavior\TimestampBehavior
  */
-class KardexesTable extends Table
+class OperationsCabTable extends Table
 {
     /**
      * Initialize method
@@ -35,7 +35,7 @@ class KardexesTable extends Table
     {
         parent::initialize($config);
 
-        $this->setTable('kardexes');
+        $this->setTable('operations_cab');
         $this->setDisplayField('id');
         $this->setPrimaryKey('id');
 
@@ -45,10 +45,9 @@ class KardexesTable extends Table
             'foreignKey' => 'user_id',
             'joinType' => 'INNER'
         ]);
-        $this->belongsToMany('Articles', [
-            'foreignKey' => 'kardex_id',
-            'targetForeignKey' => 'article_id',
-            'joinTable' => 'articles_kardexes'
+        $this->belongsTo('OperationsTypes', [
+            'foreignKey' => 'operation_type_id',
+            'joinType' => 'INNER'
         ]);
     }
 
@@ -77,6 +76,7 @@ class KardexesTable extends Table
     public function buildRules(RulesChecker $rules)
     {
         $rules->add($rules->existsIn(['user_id'], 'Users'));
+        $rules->add($rules->existsIn(['operation_type_id'], 'OperationsTypes'));
 
         return $rules;
     }

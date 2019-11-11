@@ -1,0 +1,113 @@
+<?php
+namespace App\Controller;
+
+use App\Controller\AppController;
+
+/**
+ * OperationsCab Controller
+ *
+ * @property \App\Model\Table\OperationsCabTable $OperationsCab
+ *
+ * @method \App\Model\Entity\OperationsCab[]|\Cake\Datasource\ResultSetInterface paginate($object = null, array $settings = [])
+ */
+class OperationsCabController extends AppController
+{
+    /**
+     * Index method
+     *
+     * @return \Cake\Http\Response|null
+     */
+    public function index()
+    {
+        $this->paginate = [
+            'contain' => ['Users', 'OperationsTypes']
+        ];
+        $operationsCab = $this->paginate($this->OperationsCab);
+
+        $this->set(compact('operationsCab'));
+    }
+
+    /**
+     * View method
+     *
+     * @param string|null $id Operations Cab id.
+     * @return \Cake\Http\Response|null
+     * @throws \Cake\Datasource\Exception\RecordNotFoundException When record not found.
+     */
+    public function view($id = null)
+    {
+        $operationsCab = $this->OperationsCab->get($id, [
+            'contain' => ['Users', 'OperationsTypes']
+        ]);
+
+        $this->set('operationsCab', $operationsCab);
+    }
+
+    /**
+     * Add method
+     *
+     * @return \Cake\Http\Response|null Redirects on successful add, renders view otherwise.
+     */
+    public function add()
+    {
+        $operationsCab = $this->OperationsCab->newEntity();
+        if ($this->request->is('post')) {
+            $operationsCab = $this->OperationsCab->patchEntity($operationsCab, $this->request->getData());
+            if ($this->OperationsCab->save($operationsCab)) {
+                $this->Flash->success(__('The operations cab has been saved.'));
+
+                return $this->redirect(['action' => 'index']);
+            }
+            $this->Flash->error(__('The operations cab could not be saved. Please, try again.'));
+        }
+        $users = $this->OperationsCab->Users->find('list', ['limit' => 200]);
+        $operationsTypes = $this->OperationsCab->OperationsTypes->find('list', ['limit' => 200]);
+        $this->set(compact('operationsCab', 'users', 'operationsTypes'));
+    }
+
+    /**
+     * Edit method
+     *
+     * @param string|null $id Operations Cab id.
+     * @return \Cake\Http\Response|null Redirects on successful edit, renders view otherwise.
+     * @throws \Cake\Datasource\Exception\RecordNotFoundException When record not found.
+     */
+    public function edit($id = null)
+    {
+        $operationsCab = $this->OperationsCab->get($id, [
+            'contain' => []
+        ]);
+        if ($this->request->is(['patch', 'post', 'put'])) {
+            $operationsCab = $this->OperationsCab->patchEntity($operationsCab, $this->request->getData());
+            if ($this->OperationsCab->save($operationsCab)) {
+                $this->Flash->success(__('The operations cab has been saved.'));
+
+                return $this->redirect(['action' => 'index']);
+            }
+            $this->Flash->error(__('The operations cab could not be saved. Please, try again.'));
+        }
+        $users = $this->OperationsCab->Users->find('list', ['limit' => 200]);
+        $operationsTypes = $this->OperationsCab->OperationsTypes->find('list', ['limit' => 200]);
+        $this->set(compact('operationsCab', 'users', 'operationsTypes'));
+    }
+
+    /**
+     * Delete method
+     *
+     * @param string|null $id Operations Cab id.
+     * @return \Cake\Http\Response|null Redirects to index.
+     * @throws \Cake\Datasource\Exception\RecordNotFoundException When record not found.
+     */
+    public function delete($id = null)
+    {
+        $this->request->allowMethod(['post', 'delete']);
+        $operationsCab = $this->OperationsCab->get($id);
+        if ($this->OperationsCab->delete($operationsCab)) {
+            $this->Flash->success(__('The operations cab has been deleted.'));
+        } else {
+            $this->Flash->error(__('The operations cab could not be deleted. Please, try again.'));
+        }
+
+        return $this->redirect(['action' => 'index']);
+    }
+}
