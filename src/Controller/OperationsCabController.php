@@ -2,12 +2,12 @@
 namespace App\Controller;
 
 use App\Controller\AppController;
+use App\Model\Entity\OperationsCab;
 
 /**
  * OperationsCab Controller
  *
- * @property \App\Model\Table\OperationsCabTable $OperationsCab
- *
+ * @property \App\Model\Table\OperationsCabTable $OperationsCab 
  * @method \App\Model\Entity\OperationsCab[]|\Cake\Datasource\ResultSetInterface paginate($object = null, array $settings = [])
  */
 class OperationsCabController extends AppController
@@ -53,12 +53,22 @@ class OperationsCabController extends AppController
         $operationsCab = $this->OperationsCab->newEntity();
         if ($this->request->is('post')) {
             $operationsCab = $this->OperationsCab->patchEntity($operationsCab, $this->request->getData());
-            if ($this->OperationsCab->save($operationsCab)) {
-                $this->Flash->success(__('The operations cab has been saved.'));
+            echo $operationsCab;
+            $ope_cab = new OperationsCab;
+            $ope_cab->user_id = $operationsCab->user_id;
+            if( $operationsCab->operation_type == 'comprar')
+                $ope_cab->operation_type_id = 1;
+            else if( $operationsCab->operation_type == 'vender')
+                $ope_cab->operation_type_id = 2;
+            else 
+                $ope_cab->operation_type_id = 1;
+            echo $ope_cab;
+            // if ($this->OperationsCab->save($operationsCab)) {
+            //     $this->Flash->success(__('The operations cab has been saved.'));
 
-                return $this->redirect(['action' => 'index']);
-            }
-            $this->Flash->error(__('The operations cab could not be saved. Please, try again.'));
+            //     return $this->redirect(['action' => 'index']);
+            // }
+            // $this->Flash->error(__('The operations cab could not be saved. Please, try again.'));
         }
         $users = $this->OperationsCab->Users->find('list', ['limit' => 200]);
         $operationsTypes = $this->OperationsCab->OperationsTypes->find('list', ['limit' => 200]);

@@ -16,8 +16,7 @@
         <li><?= $this->Html->link(__('List Operations Cab'), ['action' => 'index']) ?></li>
         <li><?= $this->Html->link(__('List Users'), ['controller' => 'Users', 'action' => 'index']) ?></li>
         <li><?= $this->Html->link(__('New User'), ['controller' => 'Users', 'action' => 'add']) ?></li>
-        <li><?= $this->Html->link(__('List Operations Types'), ['controller' => 'OperationsTypes', 'action' => 'index']) ?></li>
-        <li><?= $this->Html->link(__('New Operations Type'), ['controller' => 'OperationsTypes', 'action' => 'add']) ?></li>
+        
     </ul>
 </nav>
 <div class="operationsCab form large-9 medium-8 columns content">

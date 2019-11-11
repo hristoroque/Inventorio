@@ -10,3 +10,8 @@
 <a href = "./operations-det">operacion detalle</a><br>
 <a href = "./kardexes-cab">kardex cabecera</a><br>
 <a href = "./kardexes-det">kardex detalle</a><br>
+
+<form action="./operations-cab/add">
+    <button name="operation_type" type="submit" value="comprar">COMPRAR</button>
+    <button name="operation_type" type="submit" value="vender">VENDER</button>
+</form>

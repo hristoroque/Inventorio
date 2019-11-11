@@ -9,6 +9,7 @@ use Cake\ORM\Entity;
  * @property int $id
  * @property int $user_id
  * @property int $operation_type_id
+ * @property string $operation_type
  * @property \Cake\I18n\FrozenTime|null $created
  * @property \Cake\I18n\FrozenTime|null $modified
  *
@@ -32,6 +33,7 @@ class OperationsCab extends Entity
         'created' => true,
         'modified' => true,
         'user' => true,
-        'operations_type' => true
+        'operations_type' => true,
+        'operation_type' => true
     ];
 }
