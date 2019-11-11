@@ -13,6 +13,8 @@ use Cake\ORM\Entity;
  * @property float $sell_price
  * @property string $name
  * @property string|null $description
+ * @property int $current_stock
+ * @property float $current_balance
  * @property bool|null $state
  * @property \Cake\I18n\FrozenTime|null $created
  * @property \Cake\I18n\FrozenTime|null $modified
@@ -40,6 +42,9 @@ class Article extends Entity
         'sell_price' => true,
         'name' => true,
         'description' => true,
+        'description' => true,
+        'current_stock' => true,
+        'current_balance' => true,
         'state' => true,
         'created' => true,
         'modified' => true,

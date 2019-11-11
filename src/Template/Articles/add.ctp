@@ -28,7 +28,9 @@
             echo $this->Form->control('buy_price');
             echo $this->Form->control('sell_price');
             echo $this->Form->control('name');
-            echo $this->Form->control('description');
+            echo $this->Form->control('description');            
+            echo $this->Form->control('current_stock');
+            echo $this->Form->control('current_balance');
             echo $this->Form->control('state');
         ?>
     </fieldset>
