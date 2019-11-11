@@ -3,6 +3,7 @@ namespace App\Controller;
 
 use App\Controller\AppController;
 use App\Model\Entity\OperationsCab;
+use App\Model\Entity\OperationsDet;
 
 /**
  * OperationsCab Controller
@@ -49,7 +50,7 @@ class OperationsCabController extends AppController
      * @return \Cake\Http\Response|null Redirects on successful add, renders view otherwise.
      */
     public function add()
-    {
+    {        
         $operationsCab = $this->OperationsCab->newEntity();
         if ($this->request->is('post')) {
             $operationsCab = $this->OperationsCab->patchEntity($operationsCab, $this->request->getData());
@@ -63,16 +64,28 @@ class OperationsCabController extends AppController
             else 
                 $ope_cab->operation_type_id = 1;
             echo $ope_cab;
-            // if ($this->OperationsCab->save($operationsCab)) {
-            //     $this->Flash->success(__('The operations cab has been saved.'));
 
-            //     return $this->redirect(['action' => 'index']);
-            // }
-            // $this->Flash->error(__('The operations cab could not be saved. Please, try again.'));
+            $ope_det = new OperationsDet;            
+            $ope_det->article_id = $operationsCab->article_id;
+            $ope_det->quantity = $operationsCab->quantity;
+            echo($ope_det);
+
+            if ($this->OperationsCab->save($ope_cab)) {
+                $this->Flash->success(__('The operations cab has been saved.'));
+                $last_id=$ope_cab->id; 
+                //echo $last_id;
+                $ope_det->operation_cab_id = $last_id;
+                $this->loadModel('OperationsDet');
+                $this->OperationsDet->save($ope_det);
+                return $this->redirect(['action' => 'index']);
+            }
+            $this->Flash->error(__('The operations cab could not be saved. Please, try again.'));
         }
         $users = $this->OperationsCab->Users->find('list', ['limit' => 200]);
         $operationsTypes = $this->OperationsCab->OperationsTypes->find('list', ['limit' => 200]);
-        $this->set(compact('operationsCab', 'users', 'operationsTypes'));
+        $this->loadModel('Articles');
+        $articles = $this->Articles->find('list', ['limit' => 200]);
+        $this->set(compact('operationsCab', 'users', 'operationsTypes', 'articles'));
     }
 
     /**

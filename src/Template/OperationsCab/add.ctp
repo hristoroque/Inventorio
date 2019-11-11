@@ -21,9 +21,13 @@
             echo $this->Form->control('user_id', ['options' => $users]);
             //echo $this->Form->control('operation_type_id', ['options' => $operationsTypes]);
             echo $this->Form->control('operation_type', array('default'=>$type_op,'readonly' => 'readonly'));
-
+            echo $this->Form->control('article_id', ['options' => $articles]);
+            echo $this->Form->control('quantity');
         ?>
+        
     </fieldset>
+    
     <?= $this->Form->button(__('Submit')) ?>
     <?= $this->Form->end() ?>
 </div>
+
