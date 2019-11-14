@@ -14,7 +14,7 @@ use Cake\ORM\Entity;
  * @property \Cake\I18n\FrozenTime|null $modified
  *
  * @property \App\Model\Entity\OperationsCab $operations_cab
- * @property \App\Model\Entity\Article $article
+ * @property \App\Model\Entity\Article $article 
  */
 class OperationsDet extends Entity
 {
@@ -33,7 +33,7 @@ class OperationsDet extends Entity
         'quantity' => true,
         'created' => true,
         'modified' => true,
-        'operations_cab' => true,
+        'operations_cab' => true,        
         'article' => true
     ];
 }

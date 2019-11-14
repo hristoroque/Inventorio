@@ -17,6 +17,7 @@ use Cake\ORM\Entity;
  *
  * @property \App\Model\Entity\User $user
  * @property \App\Model\Entity\OperationsType $operations_type
+ * @property \App\Model\Entity\OperationsDet[] $operations_det
  */
 class OperationsCab extends Entity
 {
@@ -38,6 +39,7 @@ class OperationsCab extends Entity
         'operations_type' => true,
         'operation_type' => true,
         'article_id' => true,
-        'quantity' => true
+        'quantity' => true,
+        'operations_det' => true
     ];
 }

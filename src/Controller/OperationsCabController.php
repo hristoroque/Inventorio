@@ -41,7 +41,7 @@ class OperationsCabController extends AppController
     public function view($id = null)
     {
         $operationsCab = $this->OperationsCab->get($id, [
-            'contain' => ['Users', 'OperationsTypes']
+            'contain' => ['Users', 'OperationsTypes','OperationsDet']
         ]);
 
         $this->set('operationsCab', $operationsCab);

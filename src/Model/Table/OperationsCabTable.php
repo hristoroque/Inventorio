@@ -11,7 +11,8 @@ use Cake\Validation\Validator;
  *
  * @property \App\Model\Table\UsersTable&\Cake\ORM\Association\BelongsTo $Users
  * @property \App\Model\Table\OperationsTypesTable&\Cake\ORM\Association\BelongsTo $OperationsTypes
- *
+ * @property \App\Model\Table\OperationsDetTable&\Cake\ORM\Association\HasMany $OperationsDet
+ * 
  * @method \App\Model\Entity\OperationsCab get($primaryKey, $options = [])
  * @method \App\Model\Entity\OperationsCab newEntity($data = null, array $options = [])
  * @method \App\Model\Entity\OperationsCab[] newEntities(array $data, array $options = [])
@@ -48,6 +49,9 @@ class OperationsCabTable extends Table
         $this->belongsTo('OperationsTypes', [
             'foreignKey' => 'operation_type_id',
             'joinType' => 'INNER'
+        ]);
+        $this->hasMany('OperationsDet', [
+            'foreignKey' => 'operation_cab_id'
         ]);
     }
 
