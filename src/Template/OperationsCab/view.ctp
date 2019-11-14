@@ -1,7 +1,7 @@
 <?php
 /**
  * @var \App\View\AppView $this
- * @var \App\Model\Entity\OperationsCab $operationsCab
+ * @var \App\Model\Entity\OperationsCab $operationsCab 
  */
 ?>
 <nav class="large-3 medium-4 columns" id="actions-sidebar">
@@ -42,6 +42,7 @@
         </tr>
     </table>
     <div class="related">
+    <?php use Cake\Datasource\ConnectionManager;?>
         <h4><?= __('Related Operaciones') ?></h4>
         <?php if (!empty($operationsCab->operations_det)): ?>
         <table cellpadding="0" cellspacing="0">
@@ -51,12 +52,20 @@
                 <th scope="col"><?= __('Article') ?></th>
                 <th scope="col"><?= __('Quantity') ?></th>
             </tr>
+            
             <?php foreach ($operationsCab->operations_det as $operations_det): ?>
+            
             <tr>
                 <td><?= h($operations_det->id) ?></td>
                 <td><?= h($operations_det->operation_cab_id) ?></td>
-                <td><?= $this->Html->link($operations_det->article_id, ['controller' => 'Articles', 'action' => 'view', $operations_det->article_id]) ?></td>
+                <td><?php
+                   $connection = ConnectionManager::get('default'); 
+                   $article_info = $connection->execute('select name from articles where id = '.$operations_det->article_id.'')->fetchAll('assoc');
+                   //print_r ($article_info[0]['name']);
+                   ?>
+                   <?= $this->Html->link($article_info[0]['name'], ['controller' => 'Articles', 'action' => 'view', $operations_det->article_id]) ?></td>
                 <td><?= h($operations_det->quantity) ?></td>                
+                  
             </tr>
             <?php endforeach; ?>
         </table>
@@ -64,8 +73,7 @@
     </div>
 
     <div class="operationsCab view large-9 medium-8 columns content">
-    <h2>TOTAL = <?php
-                    use Cake\Datasource\ConnectionManager;
+    <h2>TOTAL = <?php                    
                     $connection = ConnectionManager::get('default');
                     $article_info = $connection->execute('select * from articles where id = '.$operations_det->article_id.'')->fetchAll('assoc');
                     if($operationsCab->operations_type->id == 1)

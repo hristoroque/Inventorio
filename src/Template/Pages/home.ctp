@@ -11,7 +11,7 @@
 </form>
 
 <form action="./providers">
-    <button name="providers_button" type="submit" value="providers_button" style='width:200px; height:50px'>Categorias</button>
+    <button name="providers_button" type="submit" value="providers_button" style='width:200px; height:50px'>Proveedores</button>
 </form>
 
 <form action="./articles">
