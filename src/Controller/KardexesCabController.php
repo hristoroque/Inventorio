@@ -37,7 +37,7 @@ class KardexesCabController extends AppController
     public function view($id = null)
     {
         $kardexesCab = $this->KardexesCab->get($id, [
-            'contain' => ['Articles']
+            'contain' => ['Articles','KardexesDet']
         ]);
 
         $this->set('kardexesCab', $kardexesCab);

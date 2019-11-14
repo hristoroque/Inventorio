@@ -10,6 +10,7 @@ use Cake\Validation\Validator;
  * KardexesCab Model
  *
  * @property \App\Model\Table\ArticlesTable&\Cake\ORM\Association\BelongsTo $Articles
+ * @property \App\Model\Table\KardexesDetTable&\Cake\ORM\Association\HasMany $KardexesDet
  *
  * @method \App\Model\Entity\KardexesCab get($primaryKey, $options = [])
  * @method \App\Model\Entity\KardexesCab newEntity($data = null, array $options = [])
@@ -43,6 +44,10 @@ class KardexesCabTable extends Table
         $this->belongsTo('Articles', [
             'foreignKey' => 'article_id',
             'joinType' => 'INNER'
+        ]);
+
+        $this->hasMany('KardexesDet', [
+            'foreignKey' => 'kardex_cab_id'
         ]);
     }
 

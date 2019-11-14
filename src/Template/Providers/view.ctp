@@ -13,6 +13,9 @@
         <li><?= $this->Html->link(__('New Provider'), ['action' => 'add']) ?> </li>
         <li><?= $this->Html->link(__('List Articles'), ['controller' => 'Articles', 'action' => 'index']) ?> </li>
         <li><?= $this->Html->link(__('New Article'), ['controller' => 'Articles', 'action' => 'add']) ?> </li>
+        <li><?= $this->Html->link(__('List Categories'), ['controller' => 'Categories', 'action' => 'index']) ?></li>        
+        <li><?= $this->Html->link(__('New Categories'), ['controller' => 'Categories', 'action' => 'add']) ?></li>        
+        
     </ul>
 </nav>
 <div class="providers view large-9 medium-8 columns content">

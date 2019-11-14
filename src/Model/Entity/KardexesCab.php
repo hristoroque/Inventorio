@@ -13,7 +13,8 @@ use Cake\ORM\Entity;
  * @property \Cake\I18n\FrozenTime|null $created
  * @property \Cake\I18n\FrozenTime|null $modified
  *
- * @property \App\Model\Entity\Article $article
+ * @property \App\Model\Entity\Article $article 
+ * @property \App\Model\Entity\KardexesDet[] $kardexes_det
  */
 class KardexesCab extends Entity
 {
@@ -32,6 +33,7 @@ class KardexesCab extends Entity
         'current_balance' => true,
         'created' => true,
         'modified' => true,
-        'article' => true
+        'article' => true,
+        'kardexDet' => true
     ];
 }
