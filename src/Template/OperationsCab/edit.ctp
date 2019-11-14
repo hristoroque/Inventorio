@@ -13,9 +13,8 @@
                 ['confirm' => __('Are you sure you want to delete # {0}?', $operationsCab->id)]
             )
         ?></li>
-        <li><?= $this->Html->link(__('List Operations Cab'), ['action' => 'index']) ?></li>
-        <li><?= $this->Html->link(__('List Users'), ['controller' => 'Users', 'action' => 'index']) ?></li>
-        <li><?= $this->Html->link(__('New User'), ['controller' => 'Users', 'action' => 'add']) ?></li>
+        <li><?= $this->Html->link(__('List Operations'), ['action' => 'index']) ?></li>
+        
         
     </ul>
 </nav>

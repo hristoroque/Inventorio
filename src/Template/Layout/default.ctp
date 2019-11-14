@@ -37,7 +37,7 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
     <nav class="top-bar expanded" data-topbar role="navigation">
         <ul class="title-area large-3 medium-4 columns">
             <li class="name">
-                <!-- cambiar la ruta donde se tiene el proyecto-->
+                <!-- cambiar la ruta donde se tiene el proyecto-->                                
                 <h1><a href="/CAS_proyecto_final/inventorin/">Inventorin</a></h1>
             </li>
         </ul>
@@ -47,6 +47,8 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
                 <li><a target="_blank" href="https://book.cakephp.org/3.0/">Documentation</a></li>
                 <li><a target="_blank" href="https://api.cakephp.org/3.0/">API</a></li>                
                 -->
+                <li><?= $this->Html->link(__('KARDEX'), ['controller' => 'KardexesCab', 'action' => 'index']) ?></li>
+                <li><?= $this->Html->link(__('OPERACIONES'), ['controller' => 'OperationsCab', 'action' => 'index']) ?></li>
                 <li><a  href="./">REGRESAR  </a></li>                
             </ul>
         </div>

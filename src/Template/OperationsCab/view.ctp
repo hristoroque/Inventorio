@@ -7,14 +7,9 @@
 <nav class="large-3 medium-4 columns" id="actions-sidebar">
     <ul class="side-nav">
         <li class="heading"><?= __('Actions') ?></li>
-        <li><?= $this->Html->link(__('Edit Operations Cab'), ['action' => 'edit', $operationsCab->id]) ?> </li>
-        <li><?= $this->Form->postLink(__('Delete Operations Cab'), ['action' => 'delete', $operationsCab->id], ['confirm' => __('Are you sure you want to delete # {0}?', $operationsCab->id)]) ?> </li>
-        <li><?= $this->Html->link(__('List Operations Cab'), ['action' => 'index']) ?> </li>
-        <li><?= $this->Html->link(__('New Operations Cab'), ['action' => 'add']) ?> </li>
-        <li><?= $this->Html->link(__('List Users'), ['controller' => 'Users', 'action' => 'index']) ?> </li>
-        <li><?= $this->Html->link(__('New User'), ['controller' => 'Users', 'action' => 'add']) ?> </li>
-        <li><?= $this->Html->link(__('List Operations Types'), ['controller' => 'OperationsTypes', 'action' => 'index']) ?> </li>
-        <li><?= $this->Html->link(__('New Operations Type'), ['controller' => 'OperationsTypes', 'action' => 'add']) ?> </li>
+        <li><?= $this->Html->link(__('Edit Operations '), ['action' => 'edit', $operationsCab->id]) ?> </li>
+        <li><?= $this->Form->postLink(__('Delete Operations '), ['action' => 'delete', $operationsCab->id], ['confirm' => __('Are you sure you want to delete # {0}?', $operationsCab->id)]) ?> </li>
+        <li><?= $this->Html->link(__('List Operations '), ['action' => 'index']) ?> </li>        
     </ul>
 </nav>
 <div class="operationsCab view large-9 medium-8 columns content">
@@ -26,7 +21,7 @@
         </tr>
         <tr>
             <th scope="row"><?= __('Operations Type') ?></th>
-            <td><?= $operationsCab->has('operations_type') ? $this->Html->link($operationsCab->operations_type->name, ['controller' => 'OperationsTypes', 'action' => 'view', $operationsCab->operations_type->id]) : '' ?></td>
+            <td><?= h($operationsCab->operations_type->name) ?></td>
         </tr>
         <tr>
             <th scope="row"><?= __('Id') ?></th>
@@ -73,13 +68,17 @@
     </div>
 
     <div class="operationsCab view large-9 medium-8 columns content">
-    <h2>TOTAL = <?php                    
-                    $connection = ConnectionManager::get('default');
-                    $article_info = $connection->execute('select * from articles where id = '.$operations_det->article_id.'')->fetchAll('assoc');
-                    if($operationsCab->operations_type->id == 1)
-                        $precio = $article_info[0]['buy_price'];
-                    else
-                        $precio = $article_info[0]['sell_price'];
-                    echo $operations_det->quantity * $precio.' Soles'; 
-                 ?>
+    <h2><?php $tipo_operacion_mensaje;                   
+            $connection = ConnectionManager::get('default');
+            $article_info = $connection->execute('select * from articles where id = '.$operations_det->article_id.'')->fetchAll('assoc');
+            if($operationsCab->operations_type->id == 1){
+                $precio = $article_info[0]['buy_price'];
+                $tipo_operacion_mensaje = "COMPRA";
+            }
+            else{
+                $precio = $article_info[0]['sell_price'];
+                $tipo_operacion_mensaje = "VENTA";
+            }
+            echo $tipo_operacion_mensaje." TOTAL = ".$operations_det->quantity * $precio.' Soles'; 
+        ?>
 </div>

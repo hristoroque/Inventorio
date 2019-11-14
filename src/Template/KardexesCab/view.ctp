@@ -6,13 +6,9 @@
 ?>
 <nav class="large-3 medium-4 columns" id="actions-sidebar">
     <ul class="side-nav">
-        <li class="heading"><?= __('Actions') ?></li>
-        <li><?= $this->Html->link(__('Edit Kardexes Cab'), ['action' => 'edit', $kardexesCab->id]) ?> </li>
-        <li><?= $this->Form->postLink(__('Delete Kardexes Cab'), ['action' => 'delete', $kardexesCab->id], ['confirm' => __('Are you sure you want to delete # {0}?', $kardexesCab->id)]) ?> </li>
-        <li><?= $this->Html->link(__('List Kardexes Cab'), ['action' => 'index']) ?> </li>
-        <li><?= $this->Html->link(__('New Kardexes Cab'), ['action' => 'add']) ?> </li>
-        <li><?= $this->Html->link(__('List Articles'), ['controller' => 'Articles', 'action' => 'index']) ?> </li>
-        <li><?= $this->Html->link(__('New Article'), ['controller' => 'Articles', 'action' => 'add']) ?> </li>
+        <li class="heading"><?= __('Actions') ?></li>        
+        <li><?= $this->Form->postLink(__('Delete Kardex'), ['action' => 'delete', $kardexesCab->id], ['confirm' => __('Are you sure you want to delete # {0}?', $kardexesCab->id)]) ?> </li>
+        <li><?= $this->Html->link(__('Kardex'), ['action' => 'index']) ?> </li>        
     </ul>
 </nav>
 <div class="kardexesCab view large-9 medium-8 columns content">

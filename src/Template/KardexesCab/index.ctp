@@ -6,10 +6,7 @@
 ?>
 <nav class="large-3 medium-4 columns" id="actions-sidebar">
     <ul class="side-nav">
-        <li class="heading"><?= __('Actions') ?></li>
-        <li><?= $this->Html->link(__('New Kardexes Cab'), ['action' => 'add']) ?></li>
-        <li><?= $this->Html->link(__('List Articles'), ['controller' => 'Articles', 'action' => 'index']) ?></li>
-        <li><?= $this->Html->link(__('New Article'), ['controller' => 'Articles', 'action' => 'add']) ?></li>
+        <li class="heading"><?= __('Actions') ?></li>                
     </ul>
 </nav>
 <div class="kardexesCab index large-9 medium-8 columns content">
@@ -36,8 +33,7 @@
                 <td><?= h($kardexesCab->created) ?></td>
                 <td><?= h($kardexesCab->modified) ?></td>
                 <td class="actions">
-                    <?= $this->Html->link(__('View'), ['action' => 'view', $kardexesCab->id]) ?>
-                    <?= $this->Html->link(__('Edit'), ['action' => 'edit', $kardexesCab->id]) ?>
+                    <?= $this->Html->link(__('View'), ['action' => 'view', $kardexesCab->id]) ?>                    
                     <?= $this->Form->postLink(__('Delete'), ['action' => 'delete', $kardexesCab->id], ['confirm' => __('Are you sure you want to delete # {0}?', $kardexesCab->id)]) ?>
                 </td>
             </tr>

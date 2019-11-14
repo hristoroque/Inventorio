@@ -22,6 +22,10 @@
     <button name="kardexdet_button" type="submit" value="kardexdet_button" style='width:200px; height:50px'>Kardex</button>
 </form>
 
+<form action="./operations-cab">
+    <button name="operations_button" type="submit" value="operations_button" style='width:200px; height:50px'>Operaciones</button>
+</form>
+
 <form action="./operations-cab/add">
     <button name="operation_type" type="submit" value="comprar" >COMPRAR</button>
     <button name="operation_type" type="submit" value="vender">VENDER</button>
