@@ -47,9 +47,12 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
                 <li><a target="_blank" href="https://book.cakephp.org/3.0/">Documentation</a></li>
                 <li><a target="_blank" href="https://api.cakephp.org/3.0/">API</a></li>                
                 -->
+                <li><?= $this->Html->link(__('COMPRAR'), ['controller' => 'OperationsCab', 'action' => 'add', 'operation_type' =>'comprar']) ?></li>
+                <li><?= $this->Html->link(__('VENDER'), ['controller' => 'OperationsCab', 'action' => 'add', 'operation_type' =>'vender']) ?></li>
                 <li><?= $this->Html->link(__('KARDEX'), ['controller' => 'KardexesCab', 'action' => 'index']) ?></li>
-                <li><?= $this->Html->link(__('OPERACIONES'), ['controller' => 'OperationsCab', 'action' => 'index']) ?></li>
-                <li><a  href="./">REGRESAR  </a></li>                
+                <li><?= $this->Html->link(__('OPERACIONES'), ['controller' => 'OperationsCab', 'action' => 'index']) ?></li>                
+                <li><a  href="javascript:history.back()">REGRESAR  </a></li>    
+                   
             </ul>
         </div>
     </nav>

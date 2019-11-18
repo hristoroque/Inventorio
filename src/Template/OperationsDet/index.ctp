@@ -6,12 +6,8 @@
 ?>
 <nav class="large-3 medium-4 columns" id="actions-sidebar">
     <ul class="side-nav">
-        <li class="heading"><?= __('Actions') ?></li>
-        <li><?= $this->Html->link(__('New Operations Det'), ['action' => 'add']) ?></li>
-        <li><?= $this->Html->link(__('List Operations Cab'), ['controller' => 'OperationsCab', 'action' => 'index']) ?></li>
-        <li><?= $this->Html->link(__('New Operations Cab'), ['controller' => 'OperationsCab', 'action' => 'add']) ?></li>
-        <li><?= $this->Html->link(__('List Articles'), ['controller' => 'Articles', 'action' => 'index']) ?></li>
-        <li><?= $this->Html->link(__('New Article'), ['controller' => 'Articles', 'action' => 'add']) ?></li>
+        <li class="heading"><?= __('Actions') ?></li>        
+        <li><?= $this->Html->link(__('Operations'), ['controller' => 'OperationsCab', 'action' => 'index']) ?></li>        
     </ul>
 </nav>
 <div class="operationsDet index large-9 medium-8 columns content">
@@ -24,8 +20,7 @@
                 <th scope="col"><?= $this->Paginator->sort('article_id') ?></th>
                 <th scope="col"><?= $this->Paginator->sort('quantity') ?></th>
                 <th scope="col"><?= $this->Paginator->sort('created') ?></th>
-                <th scope="col"><?= $this->Paginator->sort('modified') ?></th>
-                <th scope="col" class="actions"><?= __('Actions') ?></th>
+                <th scope="col"><?= $this->Paginator->sort('modified') ?></th>                
             </tr>
         </thead>
         <tbody>
@@ -36,12 +31,7 @@
                 <td><?= $operationsDet->has('article') ? $this->Html->link($operationsDet->article->name, ['controller' => 'Articles', 'action' => 'view', $operationsDet->article->id]) : '' ?></td>
                 <td><?= $this->Number->format($operationsDet->quantity) ?></td>
                 <td><?= h($operationsDet->created) ?></td>
-                <td><?= h($operationsDet->modified) ?></td>
-                <td class="actions">
-                    <?= $this->Html->link(__('View'), ['action' => 'view', $operationsDet->id]) ?>
-                    <?= $this->Html->link(__('Edit'), ['action' => 'edit', $operationsDet->id]) ?>
-                    <?= $this->Form->postLink(__('Delete'), ['action' => 'delete', $operationsDet->id], ['confirm' => __('Are you sure you want to delete # {0}?', $operationsDet->id)]) ?>
-                </td>
+                <td><?= h($operationsDet->modified) ?></td>                
             </tr>
             <?php endforeach; ?>
         </tbody>

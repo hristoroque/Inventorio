@@ -6,10 +6,8 @@
 ?>
 <nav class="large-3 medium-4 columns" id="actions-sidebar">
     <ul class="side-nav">
-        <li class="heading"><?= __('Actions') ?></li>
-        <li><?= $this->Html->link(__('New Kardexes Det'), ['action' => 'add']) ?></li>
-        <li><?= $this->Html->link(__('List Kardexes Cab'), ['controller' => 'KardexesCab', 'action' => 'index']) ?></li>
-        <li><?= $this->Html->link(__('New Kardexes Cab'), ['controller' => 'KardexesCab', 'action' => 'add']) ?></li>
+        <li class="heading"><?= __('Actions') ?></li>        
+        <li><?= $this->Html->link(__('Kardex'), ['controller' => 'KardexesCab', 'action' => 'index']) ?></li>        
     </ul>
 </nav>
 <div class="kardexesDet index large-9 medium-8 columns content">

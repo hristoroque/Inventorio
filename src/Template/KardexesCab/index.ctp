@@ -4,13 +4,8 @@
  * @var \App\Model\Entity\KardexesCab[]|\Cake\Collection\CollectionInterface $kardexesCab
  */
 ?>
-<nav class="large-3 medium-4 columns" id="actions-sidebar">
-    <ul class="side-nav">
-        <li class="heading"><?= __('Actions') ?></li>                
-    </ul>
-</nav>
-<div class="kardexesCab index large-9 medium-8 columns content">
-    <h3><?= __('Kardexes Cab') ?></h3>
+<div class="kardexesCab index large-100 medium-100 columns content">
+    <h3><?= __('Kardex') ?></h3>
     <table cellpadding="0" cellspacing="0">
         <thead>
             <tr>
@@ -33,8 +28,7 @@
                 <td><?= h($kardexesCab->created) ?></td>
                 <td><?= h($kardexesCab->modified) ?></td>
                 <td class="actions">
-                    <?= $this->Html->link(__('View'), ['action' => 'view', $kardexesCab->id]) ?>                    
-                    <?= $this->Form->postLink(__('Delete'), ['action' => 'delete', $kardexesCab->id], ['confirm' => __('Are you sure you want to delete # {0}?', $kardexesCab->id)]) ?>
+                    <?= $this->Html->link(__('View'), ['action' => 'view', $kardexesCab->id]) ?>                                        
                 </td>
             </tr>
             <?php endforeach; ?>

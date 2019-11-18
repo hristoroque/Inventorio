@@ -4,13 +4,8 @@
  * @var \App\Model\Entity\OperationsCab[]|\Cake\Collection\CollectionInterface $operationsCab
  */
 ?>
-<nav class="large-3 medium-4 columns" id="actions-sidebar">
-    <ul class="side-nav">
-        <li class="heading"><?= __('Actions') ?></li>                
-    </ul>
-</nav>
-<div class="operationsCab index large-9 medium-8 columns content">
-    <h3><?= __('Operations Cab') ?></h3>
+<div class="operationsCab index large-100 medium-100 columns content">
+    <h3><?= __('Operations') ?></h3>
     <table cellpadding="0" cellspacing="0">
         <thead>
             <tr>
