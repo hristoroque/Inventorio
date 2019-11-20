@@ -16,6 +16,7 @@ use Cake\ORM\Entity;
  * @property \Cake\I18n\FrozenTime|null $modified
  *
  * @property \App\Model\Entity\User $user 
+ * @property \App\Model\Entity\Article $article
  * @property \App\Model\Entity\OperationsType $operations_type
  * @property \App\Model\Entity\OperationsDet[] $operations_det
  */
@@ -40,6 +41,7 @@ class OperationsCab extends Entity
         'operation_type' => true,
         'article_id' => true,        
         'quantity' => true,
-        'operations_det' => true
+        'operations_det' => true,
+        'article' => true
     ];
 }

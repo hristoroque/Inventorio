@@ -37,7 +37,7 @@ class ArticlesController extends AppController
      * @throws \Cake\Datasource\Exception\RecordNotFoundException When record not found.
      */
     public function view($id = null)
-    {
+    {        
         $article = $this->Articles->get($id, [
             'contain' => ['Providers', 'Categories', 'KardexesCab', 'OperationsDet']
         ]);
@@ -137,5 +137,31 @@ class ArticlesController extends AppController
         }
 
         return $this->redirect(['action' => 'index']);
+    }
+
+    public function price()
+    {   
+        $this->request->allowMethod('ajax');   
+        $keyword = $this->request->query('keyword');       
+        
+        $article = $this->Articles->get($keyword, [
+            'contain' => ['Providers', 'Categories', 'KardexesCab', 'OperationsDet']
+        ]);
+
+        $this->set('article', $article);
+        
+    }
+
+    public function comprarprice()
+    {   
+        $this->request->allowMethod('ajax');   
+        $keyword = $this->request->query('keyword');       
+        
+        $article = $this->Articles->get($keyword, [
+            'contain' => ['Providers', 'Categories', 'KardexesCab', 'OperationsDet']
+        ]);
+
+        $this->set('article', $article);
+        
     }
 }
