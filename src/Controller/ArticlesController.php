@@ -155,8 +155,7 @@ class ArticlesController extends AppController
     public function comprarprice()
     {   
         $this->request->allowMethod('ajax');   
-        $keyword = $this->request->query('keyword');       
-        
+        $keyword = $this->request->query('keyword');               
         $article = $this->Articles->get($keyword, [
             'contain' => ['Providers', 'Categories', 'KardexesCab', 'OperationsDet']
         ]);

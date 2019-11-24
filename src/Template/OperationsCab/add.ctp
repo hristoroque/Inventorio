@@ -19,7 +19,6 @@
     
 </nav>
 <div class="operationsCab form large-9 medium-8 columns content">
-    <?= $this->Form->create($operationsCab) ?>
     <fieldset>
         <legend><?= __('Add Operations') ?></legend>
         <?php
@@ -27,16 +26,14 @@
             echo $this->Form->control('user_id', ['options' => $users]);
             //echo $this->Form->control('operation_type_id', ['options' => $operationsTypes]);
             echo $this->Form->control('operation_type', array('default'=>$type_op,'readonly' => 'readonly'));
-            echo $this->Form->control('article_id', ['options' => $articles,'onchange' =>'articlePrice(this)']);
+            echo $this->Form->control('article_id',  ['options' => $articles,'empty' => '(elegir uno)','onchange' =>'articlePrice(this)']);
             echo $this->Form->control('quantity');                        
         ?>
         PRECIO: S/.<div id="articlePrice"></div>
     </fieldset>
-    
-    <?= $this->Form->button(__('Submit')) ?>
-    <?= $this->Form->end() ?>    
-    
-</div>
+    <h1><div id="mensaje"></div></h1>
+    <button onclick="accept()">ACEPTAR</buton>
+    </div>
 
 <script>
     var myArr = [[]];
@@ -44,19 +41,24 @@
     var result = 0;      
     function pushData(){
         var quantity = document.getElementById('quantity').value;
+        var inputTextArticle = document.getElementById('article-id');            
+        var strArticle = inputTextArticle.options[inputTextArticle.selectedIndex].text;                 
         if (quantity < 1 ){
             alert ('INGRESE CANTIDAD');
             return false;
         }
+        else if (strArticle == "(elegir uno)" ){
+            alert ('Seleccione Articulo');
+            return false;
+        }
         else{            
             var userId = document.getElementById('user-id');
-            var operationType = document.getElementById('operation-type');
-            var inputTextArticle = document.getElementById('article-id');            
-            var strArticle = inputTextArticle.options[inputTextArticle.selectedIndex].text;           
+            var operationType = document.getElementById('operation-type');            
             var articlePrice = document.getElementById('articlePrice').innerHTML;
             console.log(parseInt(articlePrice));
 
             myArr[i]=new Array;
+            myArr[i].push(i);
             myArr[i].push(parseInt(userId.value));
             myArr[i].push(operationType.value);
             myArr[i].push(inputTextArticle.value);
@@ -72,10 +74,16 @@
             button.id = i;
 
             button.onclick = function() {                
-                var elem = document.getElementById(this.id);            
-                myArr.pop(this.id);
-
-                
+                var elem = document.getElementById(this.id);                
+                for(var j = 0; j < myArr.length ; j++){
+                    //console.log("jjjjjjj  ", j)
+                    if( myArr[j] != undefined){                     
+                        if (myArr[j][0] == this.id){                        
+                            myArr.splice(j, 1);
+                            //console.log("MI ARRUEGO NUEVO ", myArr);
+                        }
+                    }
+                }
                 var n = elem.innerHTML.split(" ");
                 n =  n[n.length - 1];
 
@@ -85,6 +93,7 @@
                     result = result - parseFloat(n);            
                     return result ;
                 });      
+                
             };
 
             var div_button = document.getElementById("div_button_add_articles");
@@ -136,6 +145,27 @@
                 });
         
     }
+    function accept() { 
+        if( myArr[0][0] == undefined){
+            alert("no hay articulos");
+            return false;
+        }        
+        $.ajax({
+                    headers: {
+                        'X-CSRF-Token': '<?= h($this->request->getParam('_csrfToken')); ?>'
+                    },
+                    type: 'get',                    
+                    url : "<?php echo $this->Url->build( [ 'controller' => 'OperationsCab', 'action' => 'accept' ] ); ?>",
+                    data : {
+                        keyword:myArr                        
+                    },                              
+                    success: function( response )
+                    {   
+                        document.getElementById("mensaje").innerHTML = response;
+                        console.log(myArr);
+                        window.location.replace("../");
+                    }
+                });
         
- 
+    }
 </script>
