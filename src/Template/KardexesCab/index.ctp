@@ -1,0 +1,47 @@
+<?php
+/**
+ * @var \App\View\AppView $this
+ * @var \App\Model\Entity\KardexesCab[]|\Cake\Collection\CollectionInterface $kardexesCab
+ */
+?>
+<div class="kardexesCab index large-100 medium-100 columns content">
+    <h3><?= __('Kardex') ?></h3>
+    <table cellpadding="0" cellspacing="0">
+        <thead>
+            <tr>
+                <th scope="col"><?= $this->Paginator->sort('id') ?></th>
+                <th scope="col"><?= $this->Paginator->sort('article_id') ?></th>
+                <th scope="col"><?= $this->Paginator->sort('current_stock') ?></th>
+                <th scope="col"><?= $this->Paginator->sort('current_balance') ?></th>
+                <th scope="col"><?= $this->Paginator->sort('created') ?></th>
+                <th scope="col"><?= $this->Paginator->sort('modified') ?></th>
+                <th scope="col" class="actions"><?= __('Actions') ?></th>
+            </tr>
+        </thead>
+        <tbody>
+            <?php foreach ($kardexesCab as $kardexesCab): ?>
+            <tr>
+                <td><?= $this->Number->format($kardexesCab->id) ?></td>
+                <td><?= $kardexesCab->has('article') ? $this->Html->link($kardexesCab->article->name, ['controller' => 'Articles', 'action' => 'view', $kardexesCab->article->id]) : '' ?></td>
+                <td><?= $this->Number->format($kardexesCab->current_stock) ?></td>
+                <td><?= $this->Number->format($kardexesCab->current_balance) ?></td>
+                <td><?= h($kardexesCab->created) ?></td>
+                <td><?= h($kardexesCab->modified) ?></td>
+                <td class="actions">
+                    <?= $this->Html->link(__('View'), ['action' => 'view', $kardexesCab->id]) ?>                                        
+                </td>
+            </tr>
+            <?php endforeach; ?>
+        </tbody>
+    </table>
+    <div class="paginator">
+        <ul class="pagination">
+            <?= $this->Paginator->first('<< ' . __('first')) ?>
+            <?= $this->Paginator->prev('< ' . __('previous')) ?>
+            <?= $this->Paginator->numbers() ?>
+            <?= $this->Paginator->next(__('next') . ' >') ?>
+            <?= $this->Paginator->last(__('last') . ' >>') ?>
+        </ul>
+        <p><?= $this->Paginator->counter(['format' => __('Page {{page}} of {{pages}}, showing {{current}} record(s) out of {{count}} total')]) ?></p>
+    </div>
+</div>

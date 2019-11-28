@@ -1,0 +1,47 @@
+<?php
+/**
+ * @var \App\View\AppView $this
+ * @var \App\Model\Entity\OperationsCab[]|\Cake\Collection\CollectionInterface $operationsCab
+ */
+?>
+<div class="operationsCab index large-100 medium-100 columns content">
+    <h3><?= __('Operations') ?></h3>
+    <table cellpadding="0" cellspacing="0">
+        <thead>
+            <tr>
+                <th scope="col"><?= $this->Paginator->sort('id') ?></th>
+                <th scope="col"><?= $this->Paginator->sort('user_id') ?></th>
+                <th scope="col"><?= $this->Paginator->sort('operation_type_id') ?></th>
+                <th scope="col"><?= $this->Paginator->sort('created') ?></th>
+                <th scope="col"><?= $this->Paginator->sort('modified') ?></th>
+                <th scope="col" class="actions"><?= __('Actions') ?></th>
+            </tr>
+        </thead>
+        <tbody>
+            <?php foreach ($operationsCab as $operationsCab): ?>
+            <tr>
+                <td><?= $this->Number->format($operationsCab->id) ?></td>
+                <td><?= $operationsCab->has('user') ? $this->Html->link($operationsCab->user->name, ['controller' => 'Users', 'action' => 'view', $operationsCab->user->id]) : '' ?></td>
+                <td><?= h($operationsCab->operations_type->name) ?></td>
+                <td><?= h($operationsCab->created) ?></td>
+                <td><?= h($operationsCab->modified) ?></td>
+                <td class="actions">
+                    <?= $this->Html->link(__('View'), ['action' => 'view', $operationsCab->id]) ?>
+                    <?= $this->Html->link(__('Edit'), ['action' => 'edit', $operationsCab->id]) ?>
+                    <?= $this->Form->postLink(__('Delete'), ['action' => 'delete', $operationsCab->id], ['confirm' => __('Are you sure you want to delete # {0}?', $operationsCab->id)]) ?>
+                </td>
+            </tr>
+            <?php endforeach; ?>
+        </tbody>
+    </table>
+    <div class="paginator">
+        <ul class="pagination">
+            <?= $this->Paginator->first('<< ' . __('first')) ?>
+            <?= $this->Paginator->prev('< ' . __('previous')) ?>
+            <?= $this->Paginator->numbers() ?>
+            <?= $this->Paginator->next(__('next') . ' >') ?>
+            <?= $this->Paginator->last(__('last') . ' >>') ?>
+        </ul>
+        <p><?= $this->Paginator->counter(['format' => __('Page {{page}} of {{pages}}, showing {{current}} record(s) out of {{count}} total')]) ?></p>
+    </div>
+</div>
