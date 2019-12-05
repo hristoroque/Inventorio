@@ -13,7 +13,7 @@
  * @license       https://opensource.org/licenses/mit-license.php MIT License
  */
 
-$cakeDescription = 'CakePHP: the rapid development php framework';
+$softwareDescription = "Inventorín: Software de Inventarios";
 ?>
 <!DOCTYPE html>
 <html>
@@ -21,11 +21,11 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
     <?= $this->Html->charset() ?>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>
-        <?= $cakeDescription ?>:
+        <?= $softwareDescription ?>:
         <?= $this->fetch('title') ?>
     </title>
     <?= $this->Html->meta('icon') ?>
-
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <?= $this->Html->css('base.css') ?>
     <?= $this->Html->css('style.css') ?>
 
@@ -34,34 +34,9 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
     <?= $this->fetch('script') ?>
 </head>
 <body>
-    <nav class="top-bar expanded" data-topbar role="navigation">
-        <ul class="title-area large-3 medium-4 columns">
-            <li class="name">
-                <!-- cambiar la ruta donde se tiene el proyecto-->                                
-                <h1><a href="/CAS_proyecto_final/inventorin/">Inventorin</a></h1>
-            </li>
-        </ul>
-        <div class="top-bar-section">
-            <ul class="right">
-                <!--
-                <li><a target="_blank" href="https://book.cakephp.org/3.0/">Documentation</a></li>
-                <li><a target="_blank" href="https://api.cakephp.org/3.0/">API</a></li>                
-                -->
-                <li><?= $this->Html->link(__('COMPRAR'), ['controller' => 'OperationsCab', 'action' => 'add', 'operation_type' =>'comprar']) ?></li>
-                <li><?= $this->Html->link(__('VENDER'), ['controller' => 'OperationsCab', 'action' => 'add', 'operation_type' =>'vender']) ?></li>
-                <li><?= $this->Html->link(__('KARDEX'), ['controller' => 'KardexesCab', 'action' => 'index']) ?></li>
-                <li><?= $this->Html->link(__('OPERACIONES'), ['controller' => 'OperationsCab', 'action' => 'index']) ?></li>                
-                <li><a  href="javascript:history.back()">REGRESAR  </a></li>    
-                   
-            </ul>
-        </div>
-    </nav>
     <?= $this->Flash->render() ?>
-    <div class="container clearfix">
+    <div class="container-fluid">
         <?= $this->fetch('content') ?>
     </div>
-    <footer >
-    <a href = "./">REGRESAR</a><br>
-    </footer>
 </body>
 </html>
