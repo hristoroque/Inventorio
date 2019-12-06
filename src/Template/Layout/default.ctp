@@ -26,15 +26,14 @@ $softwareDescription = "Inventorín: Software de Inventarios";
     </title>
     <?= $this->Html->meta('icon') ?>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-    <?= $this->Html->css('base.css') ?>
     <?= $this->Html->css('style.css') ?>
-
     <?= $this->fetch('meta') ?>
     <?= $this->fetch('css') ?>
     <?= $this->fetch('script') ?>
 </head>
 <body>
     <?= $this->Flash->render() ?>
+    <?= $this->fetch('navbar') ?>
     <div class="container-fluid">
         <?= $this->fetch('content') ?>
     </div>
