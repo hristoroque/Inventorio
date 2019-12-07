@@ -5,48 +5,59 @@
  * @var \App\Model\Entity\OperationsCab $operationsCab
  */
 ?>
-<ul class="nav">
-        <li class="nav-item">
-            <a class="btn btn-outline-secondary" href="..">Volver</a>
-        </li>
-    </ul>
+<?php $this->start('navbar') ?>
+<ul class="navbar navbar-dark bg-dark navbar-expand-smg">
+    <a class="navbar-brand" href="..">Volver</a>
+</ul>
+<?php $this->end() ?>
 <div class="row">
     <nav class="col-md-3">
-        <ul class="side-nav">
-            <li class="heading"><?= __('Actions') ?></li>
-            <li><?= $this->Html->link(__('List Operations'), ['action' => 'index']) ?></li>        
+        <ul class="nav flex-column">
+            <li class="nav-item">
+                <a class="nav-link disabled"> <?= __('Actions') ?> </a>
+            </li>  
         </ul>
-        
         <div id=div_button_add_articles>
         </div>
-        TOTAL <input type="text" id="total" readonly="true"/>
-        <button class="btn btn-primary" onclick="pushData()">Agregar</buton>
-        
+        <div class="nav-item">
+            Total
+        </div>
+        <div class="nav-item">
+            <input type="text" id="total" readonly="true"/>
+        </div>
+        <div class="nav-item">
+            <button class="btn btn-primary" onclick="pushData()">Agregar Producto</button>
+        </div>
     </nav>
     <div class="col-md-9">
+    <form>
         <fieldset>
-            <legend><?= __('Add Operations') ?></legend>
+            <legend><?= __('Register Sale') ?></legend>
             <?php
                 $type_op = $_GET['operation_type'];
+                echo $type_op;
                 ?>
-                <div class="form-group">           
-                <?= $this->Form->control('user_id', ['options' => $users,'class'=>'form-control']); ?>
-                </div>
-                <div clas="form-group">
-                    <?= $this->Form->control('operation_type', ['default'=>$type_op,'readonly' => 'readonly','class'=>'form-control']); ?>
+                <div class="form-group">   
+                    <label><?= __("User") ?></label>        
+                    <?= $this->Form->select('user_id', $users,['class'=>'form-control','id'=>'user-id']); ?>
                 </div>
                 <div class="form-group">
-                    <?= $this->Form->control('article_id',  ['options' => $articles,'empty' => '(elegir uno)','onchange' =>'articlePrice(this)','class' => 'form-control']); ?>
+                    <label><?= __("Operation Type")?></label>
+                    <?= $this->Form->text('operation_type', ['default'=>$type_op,'readonly' => 'readonly','class'=>'form-control','id'=>'operation-type']); ?>
                 </div>
                 <div class="form-group">
-                    <?= $this->Form->control('quantity',['type'=>'number','class' => 'form-control']); ?>
+                    <label><?= __("Article") ?></label>
+                    <?= $this->Form->select('article_id', $articles ,['empty' => '(elegir uno)','onchange' =>'articlePrice(this)','class' => 'form-control','id'=>'article-id']); ?>
+                </div>
+                <div class="form-group">
+                    <label><?= __("Quantity") ?></label>
+                    <?= $this->Form->text('quantity',['type'=>'number','class' => 'form-control','id'=>'quantity']); ?>
                 </div>                         
-        
-            PRECIO: S/.<div id="articlePrice"></div>
+                <?php __("PRECIO: S/.")?><div id="articlePrice"></div>
         </fieldset>
         <h1><div id="mensaje"></div></h1>
         <button class="btn btn-primary" onclick="accept()">ACEPTAR</buton>
-    </div>
+     </form>
 </div>
 <script>
     var myArr = [[]];
