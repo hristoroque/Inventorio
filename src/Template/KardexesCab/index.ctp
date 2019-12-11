@@ -12,6 +12,7 @@
 <div class="row">
 <div class="col-sm-12">
     <h3><?= __('Kardex') ?></h3>
+    <div class="table-responsive-sm">
     <table class="table">
         <thead>
             <tr>
@@ -40,6 +41,7 @@
             <?php endforeach; ?>
         </tbody>
     </table>
+    </div>
     <div class="row">
         <ul class="btn-group" role="group" aria-label="Basic example">
             <?= $this->Paginator->first('<< ' . __('first')) ?>
