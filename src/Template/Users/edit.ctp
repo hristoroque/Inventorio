@@ -4,8 +4,14 @@
  * @var \App\Model\Entity\User $user
  */
 ?>
-<nav class="large-3 medium-4 columns">
-    <ul class="side-nav">
+<?php $this->start('navbar') ?>
+        <nav class="navbar navbar-dark bg-dark navbar-expand-sm">
+            <a class="navbar-brand" href="/"><?=__("Menu")?></a> 
+        </nav>
+<?php $this->end() ?>
+<div class ="row">
+<nav class="col-md-2">
+    <ul class="nav flex-column">
         <li class="heading"><?= __('Actions') ?></li>
         <li><?= $this->Form->postLink(
                 __('Delete'),
@@ -22,7 +28,7 @@
         <li><?= $this->Html->link(__('New Articles'), ['controller' => 'Articles', 'action' => 'add']) ?></li>
     </ul>
 </nav>
-<div class="users form large-9 medium-8 columns">
+<div class="col-md-10">
     <?= $this->Form->create($user) ?>
     <fieldset>
         <legend><?= __('Edit User') ?></legend>
@@ -36,4 +42,5 @@
     </fieldset>
     <?= $this->Form->button(__('Submit')) ?>
     <?= $this->Form->end() ?>
+</div>
 </div>

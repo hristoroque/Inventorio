@@ -4,9 +4,15 @@
  * @var \App\Model\Entity\Article $article
  */
 ?>
+<?php $this->start('navbar') ?>
+        <nav class="navbar navbar-dark bg-dark navbar-expand-sm">
+            <a class="navbar-brand" href="/articles"><?=__("Return")?></a> 
+        </nav>
+<?php $this->end() ?>
 <div class="row">
-    <nav class="large-3 medium-4 columns" id="actions-sidebar">
-        <ul class="side-nav">
+<div>
+    <nav class="col-md-2">
+        <ul class="nav flex-column">
             <li class="heading"><?= __('Actions') ?></li>
             <li><?= $this->Html->link(__('List Articles'), ['action' => 'index']) ?></li>
             <li><?= $this->Html->link(__('List Users'), ['controller' => 'Users', 'action' => 'index']) ?></li>
@@ -18,7 +24,7 @@
         </ul>
     </nav>
 </div>
-<div class="articles form large-9 medium-8 columns content">
+<div class="col-md-10">
     <?= $this->Form->create($article) ?>
     <fieldset>
         <legend><?= __('Add Article') ?></legend>
@@ -36,4 +42,5 @@
     </fieldset>
     <?= $this->Form->button(__('Submit')) ?>
     <?= $this->Form->end() ?>
+</div>
 </div>

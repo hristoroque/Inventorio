@@ -4,8 +4,14 @@
  * @var \App\Model\Entity\Article $article
  */
 ?>
-<nav class="large-3 medium-4 columns" id="actions-sidebar">
-    <ul class="side-nav">
+<?php $this->start('navbar') ?>
+        <nav class="navbar navbar-dark bg-dark navbar-expand-sm">
+            <a class="navbar-brand" href="/articles"><?=__("Return")?></a> 
+        </nav>
+<?php $this->end() ?>
+<div class="row">
+<nav class="col-md-2">
+    <ul class="nav flex-column">
         <li class="heading"><?= __('Actions') ?></li>
         <li><?= $this->Html->link(__('Edit Article'), ['action' => 'edit', $article->id]) ?> </li>
         <li><?= $this->Form->postLink(__('Delete Article'), ['action' => 'delete', $article->id], ['confirm' => __('Are you sure you want to delete # {0}?', $article->id)]) ?> </li>
@@ -19,7 +25,7 @@
         <li><?= $this->Html->link(__('New Categories'), ['controller' => 'Categories', 'action' => 'add']) ?></li>
     </ul>
 </nav>
-<div class="articles view large-9 medium-8 columns content">
+<div class="col-md-10">
     <h3><?= h($article->name) ?></h3>
     <table class="vertical-table">
         <tr>
@@ -63,10 +69,11 @@
             <td><?= $article->state ? __('Yes') : __('No'); ?></td>
         </tr>
     </table>
-    <div class="related">
+    <div class="col-md-12">
         <h4><?= __('Related Kardexes Cab') ?></h4>
         <?php if (!empty($article->kardexes_cab)): ?>
-        <table cellpadding="0" cellspacing="0">
+        <div class="table-responsive">
+        <table class="table">
             <tr>
                 <th scope="col"><?= __('Id') ?></th>
                 <th scope="col"><?= __('Article Id') ?></th>
@@ -92,12 +99,14 @@
             </tr>
             <?php endforeach; ?>
         </table>
+        </div>
         <?php endif; ?>
     </div>
-    <div class="related">
+    <div class="col-md-12">
         <h4><?= __('Related Operations Det') ?></h4>
         <?php if (!empty($article->operations_det)): ?>
-        <table cellpadding="0" cellspacing="0">
+        <div class="table-responsive">
+        <table class="table">
             <tr>
                 <th scope="col"><?= __('Id') ?></th>
                 <th scope="col"><?= __('Operation Cab Id') ?></th>
@@ -123,6 +132,8 @@
             </tr>
             <?php endforeach; ?>
         </table>
+        </div>
         <?php endif; ?>
     </div>
+</div>
 </div>

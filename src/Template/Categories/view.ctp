@@ -4,8 +4,14 @@
  * @var \App\Model\Entity\Category $category
  */
 ?>
-<nav class="large-3 medium-4 columns" id="actions-sidebar">
-    <ul class="side-nav">
+<?php $this->start('navbar') ?>
+        <nav class="navbar navbar-dark bg-dark navbar-expand-sm">
+            <a class="navbar-brand" href="/categories"><?=__("Return")?></a> 
+        </nav>
+<?php $this->end() ?>
+<div class="row">
+<nav class="col-md-2">
+    <ul class="nav flex-column">
         <li class="heading"><?= __('Actions') ?></li>
         <li><?= $this->Html->link(__('Edit Category'), ['action' => 'edit', $category->id]) ?> </li>
         <li><?= $this->Form->postLink(__('Delete Category'), ['action' => 'delete', $category->id], ['confirm' => __('Are you sure you want to delete # {0}?', $category->id)]) ?> </li>
@@ -19,9 +25,10 @@
         <li><?= $this->Html->link(__('New Articles'), ['controller' => 'Articles', 'action' => 'add']) ?></li>
     </ul>
 </nav>
-<div class="categories view large-9 medium-8 columns content">
+<div class="col-md-10">
     <h3><?= h($category->name) ?></h3>
-    <table class="vertical-table">
+    <div class="table-responsive">
+    <table class="table">
         <tr>
             <th scope="row"><?= __('Name') ?></th>
             <td><?= h($category->name) ?></td>
@@ -47,10 +54,12 @@
             <td><?= $category->state ? __('Yes') : __('No'); ?></td>
         </tr>
     </table>
-    <div class="related">
+    </div>
+    <div class="col-md-12">
         <h4><?= __('Related Articles') ?></h4>
         <?php if (!empty($category->articles)): ?>
-        <table cellpadding="0" cellspacing="0">
+        <div class="table-responsive">
+        <table class="table">
             <tr>
                 <th scope="col"><?= __('Id') ?></th>
                 <th scope="col"><?= __('Provider Id') ?></th>
@@ -84,6 +93,8 @@
             </tr>
             <?php endforeach; ?>
         </table>
+        </div>
         <?php endif; ?>
     </div>
+</div>
 </div>
