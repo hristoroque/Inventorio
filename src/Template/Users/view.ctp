@@ -4,8 +4,14 @@
  * @var \App\Model\Entity\User $user
  */
 ?>
-<nav class="large-3 medium-4 columns">
-    <ul class="side-nav">
+<?php $this->start('navbar') ?>
+        <nav class="navbar navbar-dark bg-dark navbar-expand-sm">
+            <a class="navbar-brand" href="/users"><?=__("Return")?></a> 
+        </nav>
+<?php $this->end() ?>
+<div class="row">
+<nav class="col-md-2">
+    <ul class="nav flex-column">
         <li class="heading"><?= __('Actions') ?></li>
         <li><?= $this->Html->link(__('Edit User'), ['action' => 'edit', $user->id]) ?> </li>
         <li><?= $this->Form->postLink(__('Delete User'), ['action' => 'delete', $user->id], ['confirm' => __('Are you sure you want to delete # {0}?', $user->id)]) ?> </li>
@@ -19,9 +25,10 @@
         <li><?= $this->Html->link(__('New Articles'), ['controller' => 'Articles', 'action' => 'add']) ?></li>
     </ul>
 </nav>
-<div class="users view large-9 medium-8 columns">
+<div class="col-md-10">
     <h3><?= h($user->name) ?></h3>
-    <table class="vertical-table">
+    <div class="table-responsive">
+    <table class="table">
         <tr>
             <th scope="row"><?= __('Name') ?></th>
             <td><?= h($user->name) ?></td>
@@ -55,10 +62,12 @@
             <td><?= $user->state ? __('Yes') : __('No'); ?></td>
         </tr>
     </table>
-    <div class="related">
-        <h4><?= __('Related Operations Cab') ?></h4>
+    </div>
+    <div class="col-md-12">
+        <h4><?= __('Related Operations') ?></h4>
         <?php if (!empty($user->operations_cab)): ?>
-        <table cellpadding="0" cellspacing="0">
+        <div class="table-responsive">
+        <table class="table">
             <tr>
                 <th scope="col"><?= __('Id') ?></th>
                 <th scope="col"><?= __('User Id') ?></th>
@@ -82,6 +91,8 @@
             </tr>
             <?php endforeach; ?>
         </table>
+        </div>
         <?php endif; ?>
     </div>
+</div>
 </div>

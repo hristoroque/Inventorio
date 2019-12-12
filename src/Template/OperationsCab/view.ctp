@@ -4,15 +4,21 @@
  * @var \App\Model\Entity\OperationsCab $operationsCab 
  */
 ?>
-<nav class="large-3 medium-4 columns" id="actions-sidebar">
-    <ul class="side-nav">
+<?php $this->start('navbar') ?>
+        <nav class="navbar navbar-dark bg-dark navbar-expand-sm">
+            <a class="navbar-brand" href="/operations-cab"><?=__("Return")?></a> 
+        </nav>
+<?php $this->end() ?>
+<div class="row">
+<nav class="col-md-2">
+    <ul class="nav flex-column">
         <li class="heading"><?= __('Actions') ?></li>
-        <li><?= $this->Html->link(__('Edit Operations '), ['action' => 'edit', $operationsCab->id]) ?> </li>
-        <li><?= $this->Form->postLink(__('Delete Operations '), ['action' => 'delete', $operationsCab->id], ['confirm' => __('Are you sure you want to delete # {0}?', $operationsCab->id)]) ?> </li>
-        <li><?= $this->Html->link(__('List Operations '), ['action' => 'index']) ?> </li>        
+        <li><?= $this->Html->link(__('Edit Operations'), ['action' => 'edit', $operationsCab->id]) ?> </li>
+        <li><?= $this->Form->postLink(__('Delete Operations'), ['action' => 'delete', $operationsCab->id], ['confirm' => __('Are you sure you want to delete # {0}?', $operationsCab->id)]) ?> </li>
+        <li><?= $this->Html->link(__('List Operations'), ['action' => 'index']) ?> </li>        
     </ul>
 </nav>
-<div class="operationsCab view large-9 medium-8 columns content">
+<div class="col-md-10">
     <h3><?= h($operationsCab->id) ?></h3>
     <table class="vertical-table">
         <tr>
@@ -38,9 +44,10 @@
     </table>
     <div class="related">
     <?php use Cake\Datasource\ConnectionManager;?>
-        <h4><?= __('Related Operaciones') ?></h4>
+        <h4><?= __('Related Operations') ?></h4>
         <?php if (!empty($operationsCab->operations_det)): ?>
-        <table cellpadding="0" cellspacing="0">
+        <div class="responsive-table">
+        <table class="table">
             <tr>
                 <th scope="col"><?= __('Id') ?></th>
                 <th scope="col"><?= __('Operation Cab') ?></th>
@@ -64,6 +71,7 @@
             </tr>
             <?php endforeach; ?>
         </table>
+        </div>
         <?php endif; ?>
     </div>
 
@@ -81,4 +89,5 @@
             }
             echo $tipo_operacion_mensaje." TOTAL = ".$operations_det->quantity * $precio.' Soles'; 
         ?>
+</div>
 </div>

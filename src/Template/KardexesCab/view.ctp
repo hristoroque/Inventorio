@@ -4,7 +4,12 @@
  * @var \App\Model\Entity\KardexesCab $kardexesCab
  */
 ?>
-<div class="kardexesCab view large-100 medium-100 columns content">
+<?php $this->start('navbar') ?>
+        <nav class="navbar navbar-dark bg-dark navbar-expand-sm">
+            <a class="navbar-brand" href="/kardexes-cab/"><?=__("Return")?></a> 
+        </nav>
+<?php $this->end() ?>
+<div class="col-sm-12">
     <h3>KARDEX <?= ($kardexesCab->article->name) ?></h3>
     <table class="vertical-table">
         <tr>
@@ -36,7 +41,8 @@
     <div class="related">
         <h4><?= __('Related Details') ?></h4>
         <?php if (!empty($kardexesCab->kardexes_det)): ?>
-        <table cellpadding="0" cellspacing="0">
+        <div class="table-responsive">
+        <table class="table">
             <tr>            
                 <th scope="col"><?= __('Date') ?></th>
                 <th scope="col"><?= __('Entry Amount') ?></th>
@@ -62,6 +68,7 @@
             </tr>
             <?php endforeach; ?>
         </table>
+        </div>
         <?php endif; ?>
     </div>
 </div>

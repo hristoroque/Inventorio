@@ -10,9 +10,11 @@
         <li><?= $this->Html->link(__('Kardex'), ['controller' => 'KardexesCab', 'action' => 'index']) ?></li>        
     </ul>
 </nav>
-<div class="kardexesDet index large-9 medium-8 columns content">
+<div class="row">
+<div class="col-sm-12">
     <h3><?= __('Kardexes Det') ?></h3>
-    <table cellpadding="0" cellspacing="0">
+    <div class="table-responsive">
+    <table class="table">
         <thead>
             <tr>
                 <th scope="col"><?= $this->Paginator->sort('id') ?></th>
@@ -52,6 +54,7 @@
             <?php endforeach; ?>
         </tbody>
     </table>
+    </div>
     <div class="paginator">
         <ul class="pagination">
             <?= $this->Paginator->first('<< ' . __('first')) ?>

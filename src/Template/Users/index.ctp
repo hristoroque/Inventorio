@@ -4,9 +4,14 @@
  * @var \App\Model\Entity\User[]|\Cake\Collection\CollectionInterface $users
  */
 ?>
+<?php $this->start('navbar') ?>
+        <nav class="navbar navbar-dark bg-dark navbar-expand-sm">
+            <a class="navbar-brand" href="/"><?=__("Menu")?></a> 
+        </nav>
+<?php $this->end() ?>
 <div class="row">
     <nav class="col-md-2">
-        <ul class="side-nav">
+        <ul class="nav flex-column">
             <li class="heading"><?= __('Actions') ?></li>
             <li><?= $this->Html->link(__('New User'), ['action' => 'add']) ?></li>
             <li><?= $this->Html->link(__('List Categories'), ['controller' => 'Categories', 'action' => 'index']) ?></li>        
